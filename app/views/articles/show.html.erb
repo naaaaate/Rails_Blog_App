@@ -1,0 +1,41 @@
+<p>
+  <strong>Title:</strong>
+  <%= @article.title %>
+</p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @article.text %>
+</p>
+
+<h2>Comments:</h2>
+<!-- Render still gives u a partial.. it just assigns each object in teh collection same name as partial. i think it has to be in Comments folder tho.. -->
+<%= render @article.comments %>
+<!-- As the render method iterates over the @article.comments collection, it assigns each comment to a local variable named the same as the partial -->
+
+
+
+<!-- THIS loop over the comments for the article is BEING REPLACED W PARTIAL _Comment.html.erb :
+
+ <% @article.comments.each do |comment| %>
+
+  <p>
+    <strong>Commenter:</strong>
+    <%= comment.commenter %>
+  </p>
+
+  <p>
+    <strong>Comment:</strong>
+    <%= comment.body %>
+  </p>
+<% end %>
+
+-->
+
+
+
+<h2>Add a comment:</h2>
+<%= render 'comments/form' %>
+
+<%= link_to "Edit", edit_article_path(@article) %>
+<%= link_to "Back", articles_path %>
